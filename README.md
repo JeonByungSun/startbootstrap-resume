@@ -1,70 +1,69 @@
-# WebPageTest
+# [Start Bootstrap - Resume](https://startbootstrap.com/theme/resume/)
 
-This is the official repository for the performance-testing code that runs at [webpagetest.org](https://www.webpagetest.org).
+[Resume](https://startbootstrap.com/theme/resume/) is a resume and CV theme for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/). This theme features a fixed sidebar with content sections to build a simple, yet elegant resume.
 
-- 🥡 [Install your own instance](https://docs.webpagetest.org/private-instances/)
-- 📕 [Documentation](https://github.com/catchpoint/WebPageTest.docs)
-- 🕒 [Changelog](https://docs.webpagetest.org/change-log)
-- 🌐 [Cross-platform browser agent](https://github.com/catchpoint/WebPageTest.agent)
-- 💤 [REST API](https://docs.webpagetest.org/api/) examples:
-  - 🐘 [`/bulktest`](/bulktest/): A PHP command-line tool that can submit a bulk set of tests, gather the results, and aggregate analyses.
-  - 🐍 [`/batchtool`](/batchtool/): A Python tool that can submit a bulk set of tests and gather the results.
+## Preview
 
-## Troubleshooting private instances
+[![Resume Preview](https://assets.startbootstrap.com/img/screenshots/themes/resume.png)](https://startbootstrap.github.io/startbootstrap-resume/)
 
-If your instance runs, but you’re having issues configuring agents, navigate to `http://{your_instance’s_ip}/install` to [check for a valid configuration](https://docs.webpagetest.org/private-instances/#web-server-install).
+**[View Live Preview](https://startbootstrap.github.io/startbootstrap-resume/)**
 
-## Testing
+## Status
 
-WebPageTest uses [PHPUnit](https://phpunit.de) for unit tests. To set up and run the unit tests:
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/StartBootstrap/startbootstrap-resume/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/startbootstrap-resume.svg)](https://www.npmjs.com/package/startbootstrap-resume)
 
-1. Install [Composer](https://getcomposer.org)
-2. Install [apcu](https://www.php.net/manual/en/book.apcu.php)
-3. Add the line `apc.enable_cli='on'` to your php.ini
-4. Run `composer install`
-5. Run `composer test`
+## Download and Installation
 
-## Contributing
+To begin using this template, choose one of the following options to get started:
 
-There are separate lines of development under different licenses (pull requests accepted to either):
+- [Download the latest release on Start Bootstrap](https://startbootstrap.com/theme/resume/)
+- Install using npm: `npm i startbootstrap-resume`
+- Clone the repo: `git clone https://github.com/StartBootstrap/startbootstrap-resume.git`
+- [Fork, Clone, or Download on GitHub](https://github.com/StartBootstrap/startbootstrap-resume)
 
-- The `master` branch where most active development occurs has the [Polyform Shield 1.0.0 license](LICENSE.md)
-- The `apache` branch has the more permissive [Apache 2.0 license](https://opensource.org/licenses/Apache-2.0)
+## Usage
 
-### Code style
+### Basic Usage
 
-WebPageTest uses PSR12 coding conventions for PHP linting and formatting.
-For JavaScript and CSS formatting we use Prettier with its default configuration.
-Additionally we use Stylelint for CSS linting.
+After downloading, simply edit the HTML and CSS files included with `dist` directory. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
 
-Before you send a pull request please make sure to run: `composer lint && composer format`.
+### Advanced Usage
 
-Alternatively you can run
+Clone the source files of the theme and navigate into the theme's root directory. Run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `package.json` file to see which scripts are included.
 
- - `composer lint:php && composer format:php` if you only touched PHP code, or
- - `composer lint:css && composer format:prettier` if you only touched CSS or JavaScript code
+#### npm Scripts
 
-### VSCode integration
+- `npm run build` builds the project - this builds assets, HTML, JS, and CSS into `dist`
+- `npm run build:assets` copies the files in the `src/assets/` directory into `dist`
+- `npm run build:pug` compiles the Pug located in the `src/pug/` directory into `dist`
+- `npm run build:scripts` brings the `src/js/scripts.js` file into `dist`
+- `npm run build:scss` compiles the SCSS files located in the `src/scss/` directory into `dist`
+- `npm run clean` deletes the `dist` directory to prepare for rebuilding the project
+- `npm run start:debug` runs the project in debug mode
+- `npm start` or `npm run start` runs the project, launches a live preview in your default browser, and watches for changes made to files in `src`
 
-If you use VSCode you might find it helpful to install Prettier and PHP Intelephence plugins and use these in your "settings.json":
+You must have npm installed in order to use this build environment.
 
-```
-{
-  "[php]": {
-    "editor.tabSize": 4
-  },
+## Bugs and Issues
 
-  // uncomment to reformat on every file save
-  //"editor.formatOnSave": true,
+Have a bug or an issue with this template? [Open a new issue](https://github.com/StartBootstrap/startbootstrap-resume/issues) here on GitHub or leave a comment on the [theme overview page at Start Bootstrap](https://startbootstrap.com/theme/resume/).
 
-  "phpcs.standard": "PSR12",
+## About
 
-  "files.trimTrailingWhitespace": true,
+Start Bootstrap is an open source library of free Bootstrap themes and templates. All of the free themes and templates on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
 
-  "files.eol": "\n",
+- <https://startbootstrap.com>
+- <https://twitter.com/SBootstrap>
 
-  "files.associations": {
-    "*.inc": "php"
-  }
-}
-```
+Start Bootstrap was created by and is maintained by **[David Miller](https://davidmiller.io/)**.
+
+- <https://davidmiller.io>
+- <https://twitter.com/davidmillerhere>
+- <https://github.com/davidtmiller>
+
+Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+
+## Copyright and License
+
+Copyright 2013-2023 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE) license.
