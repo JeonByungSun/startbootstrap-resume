@@ -1,4 +1,4 @@
-pipeline {
+peline {
     agent any
     environment {
         DEPLOY_PATH = "/var/www/html/dist"
@@ -30,7 +30,7 @@ pipeline {
                 script {
                     sh 'rm -rf /var/www/html/dist/*'
                     sh 'cp -r dist/* /var/www/html/dist/'
-                
+                    # ✅ chown 삭제됨!
                 }
             }
         }
