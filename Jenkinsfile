@@ -28,9 +28,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'sudo rm -rf /var/www/html/dist/*'
-                    sh 'sudo cp -r dist/* /var/www/html/dist/'
-                    sh 'sudo chown -R www-data:www-data /var/www/html/dist'
+                    sh 'rm -rf /var/www/html/dist/*'
+                    sh 'cp -r dist/* /var/www/html/dist/'
+                    sh 'chown -R www-data:www-data /var/www/html/dist'
                 }
             }
         }
