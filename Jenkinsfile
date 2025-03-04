@@ -1,9 +1,14 @@
 pipeline {
     agent any
+    environment {
+        DEPLOY_PATH = "/var/www/html/dist"
+    }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/내GitHub계정/startbootstrap-resume.git'
+                git branch: 'main',
+                    credentialsId: 'github-credentials',
+                    url: 'https://github.com/JeonByungSun/startbootstrap-resume.git'
             }
         }
         stage('Install Dependencies') {
@@ -23,9 +28,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'sudo rm -rf /var/www/html/dist/*'
-                    sh 'sudo cp -r dist/* /var/www/html/dist/'
-                    sh 'sudo chown -R www-data:www-data /var/www/html/dist'
+                    sh 'rm -rf /var/www/html/dist/*'
+                    sh 'cp -r dist/* /var/www/html/dist/'
                 }
             }
         }
