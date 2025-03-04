@@ -30,7 +30,7 @@ pipeline {
                 script {
                     sh 'rm -rf /var/www/html/dist/*'
                     sh 'cp -r dist/* /var/www/html/dist/'
-                    sh 'chown -R www-data:www-data /var/www/html/dist'
+                
                 }
             }
         }
