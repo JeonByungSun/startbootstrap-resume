@@ -1,45 +1,88 @@
 pipeline {
     agent any
-
     environment {
         DEPLOY_PATH = "/var/www/html/dist"
     }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master',
-                    credentialsId: 'github-credentials', 
-                    url: 'https://github.com/JeonByungSun/startbootstrap-resume.git'
+                script {
+                    // Git 체크아웃
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/master']],  // 수정 필요 시 교체
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [],
+                        userRemoteConfigs: [[
+                            credentialsId: 'github-credentials',
+                            url: 'https://github.com/JeonByungSun/startbootstrap-resume.git'
+                        ]]
+                    ])
+                }
+            }
+        }
+
+        stage('Check Changes') {
+            steps {
+                script {
+                    // 최근 커밋과 바로 이전 커밋 차이 비교
+                    def changes = sh(
+                        script: "git diff-tree --no-commit-id --name-only -r HEAD HEAD~1",
+                        returnStdout: true
+                    ).trim()
+
+                    echo "Changed files:\n${changes}"
+
+                    if (changes == '') {
+                        echo "No changes detected. Skipping build & deploy."
+                        env.NO_CHANGES = 'true'
+                    } else {
+                        env.NO_CHANGES = 'false'
+                    }
+                }
             }
         }
 
         stage('Install Dependencies') {
+            when {
+                expression {
+                    return env.NO_CHANGES == 'false'
+                }
+            }
             steps {
                 script {
-                    // 필요한 의존성 설치
+                    sh 'echo "Installing dependencies..."'
                     sh 'npm install'
                 }
             }
         }
 
         stage('Build') {
+            when {
+                expression {
+                    return env.NO_CHANGES == 'false'
+                }
+            }
             steps {
                 script {
-                    // 빌드 (dist 폴더 생성)
+                    sh 'echo "Building project..."'
                     sh 'npm run build'
                 }
             }
         }
 
         stage('Deploy') {
+            when {
+                expression {
+                    return env.NO_CHANGES == 'false'
+                }
+            }
             steps {
                 script {
-                    // 기존 배포 파일 삭제
-                    sh 'rm -rf /var/www/html/dist/*'
-                    // 빌드 결과 복사
-                    sh 'cp -r dist/* /var/www/html/dist/'
-                    // chown 제거 (권한 문제 해결)
+                    sh '''
+                        echo "Deploying only changed files with rsync..."
+                        rsync -av --delete dist/ ${DEPLOY_PATH}/
+                    '''
                 }
             }
         }
