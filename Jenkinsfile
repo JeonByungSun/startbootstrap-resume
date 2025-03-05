@@ -81,7 +81,7 @@ pipeline {
                 script {
                     sh '''
                         echo "Deploying only changed files with rsync..."
-                        rsync -av --delete dist/ ${DEPLOY_PATH}/
+                        rsync -av dist/ ${DEPLOY_PATH}/
                     '''
                 }
             }
