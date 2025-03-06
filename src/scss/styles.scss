@@ -17,3 +17,12 @@
 
 // Sections
 @import "./sections/resume-section.scss";
+
+
+
+.company-logo {
+	    width: 200px;  /* 원하는 크기로 조정 */
+	        height: auto;   /* 비율 유지 */
+		    display: block; /* 가운데 정렬을 쉽게 하기 위해 추가 */
+		        margin: 0 auto; /* 가운데 정렬 */
+		}
